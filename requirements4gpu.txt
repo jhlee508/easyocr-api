@@ -1,0 +1,45 @@
+anyio==3.6.1
+brotlipy==0.7.0
+certifi @ fileCWindowsTEMPabs_e9b7158a-aa56-4a5b-87b6-c00d295b01fanefpc8_ocrootsrecipecertifi_1655968940823workcertifi
+cffi @ fileCci_310cffi_1642682485096work
+charset-normalizer @ filetmpbuild80754af9charset-normalizer_1630003229654work
+click==8.1.3
+colorama==0.4.5
+cryptography @ fileCcicryptography_1652083563162work
+easyocr==1.5.0
+fastapi==0.78.0
+h11==0.13.0
+idna @ filetmpbuild80754af9idna_1637925883363work
+imageio==2.19.3
+mkl-fft==1.3.1
+mkl-random @ fileCcimkl_random_1626186184308work
+mkl-service==2.4.0
+networkx==2.8.4
+numpy @ fileCcinumpy_and_numpy_base_1652784039997work
+opencv-python-headless==4.5.4.60
+packaging==21.3
+Pillow==9.0.1
+pycparser @ filetmpbuild80754af9pycparser_1636541352034work
+pydantic==1.9.1
+pyOpenSSL @ fileoptcondaconda-bldpyopenssl_1643788558760work
+pyparsing==3.0.9
+PySocks @ fileCcipysocks_1605307512533work
+python-bidi==0.4.2
+python-multipart==0.0.5
+PyWavelets==1.3.0
+PyYAML==6.0
+requests @ fileCcirequests_1656443901233work
+scikit-image==0.19.3
+scipy==1.8.1
+six @ filetmpbuild80754af9six_1644875935023work
+sniffio==1.2.0
+starlette==0.19.1
+tifffile==2022.5.4
+torch==1.12.0
+torchaudio==0.12.0
+torchvision==0.13.0
+typing_extensions @ fileoptcondaconda-bldtyping_extensions_1647553014482work
+urllib3 @ fileCciurllib3_1650639883891work
+uvicorn==0.18.2
+win-inet-pton @ fileCciwin_inet_pton_1605306162074work
+wincertstore==0.2

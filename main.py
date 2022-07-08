@@ -112,11 +112,15 @@ def get_demo_test_json():
 async def ocr_api(files: List[UploadFile] = File(...)):
     for file in files:
         contents = await file.read()
-        with open(os.path.join("./", file.filename), "wb") as fp:
+
+        if not os.path.isdir('./img-db'):
+            os.makedirs('./img-db')
+
+        with open(os.path.join("./img-db/", file.filename), "wb") as fp:
             fp.write(contents)
 
-        reader = easyocr.Reader(['ko', 'en'], gpu=False)
-        bounds = reader.readtext(file.filename)
+        reader = easyocr.Reader(['ko', 'en'], gpu=True)
+        bounds = reader.readtext('./img-db/' + file.filename)
         bounding_boxes = []
 
         for bound in bounds:
