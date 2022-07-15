@@ -122,6 +122,7 @@ async def ocr_api(files: List[UploadFile] = File(...)):
         reader = easyocr.Reader(['ko', 'en'], gpu=True)
         bounds = reader.readtext('./img-db/' + file.filename)
         bounding_boxes = []
+        n_p_1 = 25  # Number of pixels based on visual acuity of 1.0 according to angle of view and resolution
 
         for bound in bounds:
             top_left = tuple(bound[0][0])
@@ -129,11 +130,12 @@ async def ocr_api(files: List[UploadFile] = File(...)):
             text = str(bound[1])
             conf = str(bound[2])
             n_pixel = min(bottom_right[1] - top_left[1], bottom_right[0] - top_left[0])
-            eye_sight = str(round(25 / n_pixel, 1))
+            eye_sight = str(round(n_p_1 / n_pixel, 1))
 
             bbox = {'x1': int(top_left[0]), 'y1': int(top_left[1]), 'x2': int(bottom_right[0]),
-                    'y2': int(bottom_right[1]), 'eye_sight': eye_sight, 'text': text, 'confidence': conf}
+                    'y2': int(bottom_right[1]), 'eye_sight': float(eye_sight), 'text': text, 'confidence': float(conf)}
 
-            bounding_boxes.append(bbox)
+            if 0 < float(eye_sight) < 2.0:
+                bounding_boxes.append(bbox)
 
     return bounding_boxes
