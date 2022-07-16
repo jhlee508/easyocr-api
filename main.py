@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 import os
@@ -25,14 +25,14 @@ def get_api_uri():
 @app.get("/test_json")
 def get_demo_test_json():
     jdict = [{
-            "x1": 312,
-            "y1": 65,
-            "x2": 976,
-            "y2": 140,
-            "eye_sight": "0.3",
-            "text": "자가 시력 축정 시스템 사용법",
-            "confidence": "0.5846381449443497"
-        },
+        "x1": 312,
+        "y1": 65,
+        "x2": 976,
+        "y2": 140,
+        "eye_sight": "0.3",
+        "text": "자가 시력 축정 시스템 사용법",
+        "confidence": "0.5846381449443497"
+    },
         {
             "x1": 94,
             "y1": 228,
@@ -109,7 +109,7 @@ def get_demo_test_json():
 
 
 @app.post("/ocr_api")
-async def ocr_api(files: List[UploadFile] = File(...)):
+async def ocr_api(n_p_1: int = Form(default=25), files: List[UploadFile] = File(...)):
     for file in files:
         contents = await file.read()
 
@@ -122,7 +122,7 @@ async def ocr_api(files: List[UploadFile] = File(...)):
         reader = easyocr.Reader(['ko', 'en'], gpu=True)
         bounds = reader.readtext('./img-db/' + file.filename)
         bounding_boxes = []
-        n_p_1 = 25  # Number of pixels based on visual acuity of 1.0 according to angle of view and resolution
+        n_p_1 = n_p_1  # Number of pixels based on visual acuity of 1.0 according to angle of view and resolution
 
         for bound in bounds:
             top_left = tuple(bound[0][0])
